@@ -16,7 +16,8 @@ class AlienInvasion:
         self.ship = Ship(self)
     def run_game(self):
         while True:
-            self._check_events()               
+            self._check_events()
+            self.ship.update()               
             self._update_screen()
 
     def _update_screen(self):
@@ -29,7 +30,17 @@ class AlienInvasion:
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
-
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RIGHT:
+                        self.ship.movie_right = True
+                    if event.key == pygame.K_LEFT:
+                        self.ship.movie_left = True
+                elif event.type == pygame.KEYUP:
+                    if event.key == pygame.K_RIGHT:
+                        self.ship.movie_right = False
+                    if event.key == pygame.K_LEFT:
+                        self.ship.movie_left = False
+                    
 if __name__ == "__main__":
 
     ai=AlienInvasion()
