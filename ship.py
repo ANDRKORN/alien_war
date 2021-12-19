@@ -18,7 +18,6 @@ class Ship():
         self.x = float(self.rect.x)
         
     def update(self):        
-        print(self.x , self.screen_rect.x)
         if self.movie_left and self.x > 0:
             self.x -= self.speed_ship
         if self.movie_right and self.x <= self.screen_rect.width - 50:

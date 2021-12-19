@@ -1,6 +1,7 @@
 import sys
 
 import pygame
+from GifImage import GIFImage
 from setting import Setting 
 from ship import Ship
 
@@ -9,7 +10,7 @@ class AlienInvasion:
         pygame.init()
         self.settings=Setting()
         self.bg_color=self.settings.bg_color
-
+        self.bg_image= GIFImage('image/out.gif')
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption('Alien Invasion')
 
@@ -22,7 +23,9 @@ class AlienInvasion:
             self._update_screen()
 
     def _update_screen(self):
+        
         self.screen.fill(self.bg_color)
+        self.bg_image.render(self.screen,(0,0))    
         self.ship.bltime()
         pygame.display.flip()
 
